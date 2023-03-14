@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.pahadi.labsapp.R
 import com.pahadi.labsapp.databinding.FragmentCountryListBinding
 
@@ -18,6 +19,7 @@ class CountryListFragment : Fragment() {
 
     private lateinit var viewModel: CountryListViewModel
     private var _binding: FragmentCountryListBinding? = null
+    private lateinit var countryAdapter: CountryAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,9 +35,15 @@ class CountryListFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         _binding?.includePart?.txtToolbarHead?.text = "Country List"
+        countryAdapter = CountryAdapter {
+            val countryName = it
+            Toast.makeText(requireContext(), "$countryName Clicked", Toast.LENGTH_SHORT).show()
+        }
 
         viewModel.countryList.observe({lifecycle}){
             Log.d(TAG, "FRG reading..: "+ it)
+            // todo: add pb
+            countryAdapter.submitList(it?.data)
         }
 
 
