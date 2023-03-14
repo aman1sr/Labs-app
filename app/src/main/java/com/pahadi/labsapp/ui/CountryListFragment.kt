@@ -36,6 +36,7 @@ class CountryListFragment : Fragment() {
             Log.d(TAG, "FRG reading..: "+ it)
         }
 
+
     }
 
     override fun onDestroy() {
