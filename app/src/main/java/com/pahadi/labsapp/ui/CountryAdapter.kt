@@ -3,8 +3,9 @@ package com.pahadi.labsapp.ui
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListAdapter
+
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.pahadi.labsapp.R
 import com.pahadi.labsapp.databinding.CountryItemBinding
@@ -13,7 +14,7 @@ import com.pahadi.labsapp.extensions.loadImage
 import com.pahadi.labsapp.models.CountryListReponseData
 
 class CountryAdapter (val onItemClicked: (slug: String) -> Unit): 
-    androidx.recyclerview.widget.ListAdapter<CountryListReponseData,CountryAdapter.CountryViewHolder>(
+    ListAdapter<CountryListReponseData, CountryAdapter.CountryViewHolder>(
     object : DiffUtil.ItemCallback<CountryListReponseData>(){
         override fun areItemsTheSame(
             oldItem: CountryListReponseData,

@@ -8,8 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.pahadi.labsapp.R
 import com.pahadi.labsapp.databinding.FragmentCountryListBinding
+import com.pahadi.labsapp.models.CountryListReponseData
 
 class CountryListFragment : Fragment() {
 
@@ -35,16 +37,22 @@ class CountryListFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         _binding?.includePart?.txtToolbarHead?.text = "Country List"
+        _binding?.progressBar?.visibility = View.VISIBLE
+
         countryAdapter = CountryAdapter {
             val countryName = it
             Toast.makeText(requireContext(), "$countryName Clicked", Toast.LENGTH_SHORT).show()
         }
+        _binding?.recView?.layoutManager = LinearLayoutManager(context)
+        _binding?.recView?.adapter = countryAdapter
 
         viewModel.countryList.observe({lifecycle}){
             Log.d(TAG, "FRG reading..: "+ it)
             // todo: add pb
             countryAdapter.submitList(it?.data)
+            _binding?.progressBar?.visibility = View.GONE
         }
+
 
 
     }
