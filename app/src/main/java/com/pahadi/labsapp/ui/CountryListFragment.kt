@@ -32,6 +32,8 @@ class CountryListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        _binding?.includePart?.txtToolbarHead?.text = "Country List"
+
         viewModel.countryList.observe({lifecycle}){
             Log.d(TAG, "FRG reading..: "+ it)
         }
