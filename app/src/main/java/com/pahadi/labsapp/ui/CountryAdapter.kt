@@ -3,6 +3,7 @@ package com.pahadi.labsapp.ui
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -56,8 +57,14 @@ class CountryAdapter (val onItemClicked: (slug: String) -> Unit):
             countryItem.flag?.let { avatarImageView.loadImage(it) }
 
             root.setOnClickListener {
-                clItemClick.visibility = View.VISIBLE
-                onItemClicked(countryItem.countriesName.toString())
+                if (!clItemClick.isVisible) {
+                    clItemClick.visibility = View.VISIBLE
+                    onItemClicked(countryItem.countriesName.toString())
+                } else {
+                    clItemClick.visibility = View.GONE
+
+                }
+
             }
 
 
