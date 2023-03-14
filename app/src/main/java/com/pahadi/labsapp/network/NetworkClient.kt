@@ -2,7 +2,7 @@ package com.pahadi.labsapp.network
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object NetworkClient {
@@ -13,7 +13,7 @@ object NetworkClient {
 
     val retrofitBuilder = Retrofit.Builder()
         .baseUrl("https://bpj.scf.mybluehost.me/")
-        .addConverterFactory(MoshiConverterFactory.create())
+        .addConverterFactory(GsonConverterFactory.create())
 
     val publicApi = retrofitBuilder
         .client(okHttpBuilder.build())
