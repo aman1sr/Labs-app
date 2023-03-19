@@ -40,6 +40,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:queryHint="Search Country Name"
             app:layout_constraintEnd_toEndOf="@id/gl_verticle_end"
             app:layout_constraintStart_toStartOf="@+id/gl_verticle_start"
             app:layout_constraintTop_toBottomOf="@+id/include_part" />

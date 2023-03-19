@@ -62,7 +62,6 @@ class CountryAdapter (val onItemClicked: (slug: String) -> Unit):
                     onItemClicked(countryItem.countriesName.toString())
                 } else {
                     clItemClick.visibility = View.GONE
-
                 }
 
             }
